@@ -25,6 +25,13 @@ namespace Stringek
 				osszszoveg += " ";
 			}
 			Console.WriteLine(osszszoveg);
+
+			string[] words = osszszoveg.Split(' ');
+
+			foreach (var word in words)
+			{
+				System.Console.WriteLine(word);
+			}
 			Console.ReadKey();
 		}
 	}
