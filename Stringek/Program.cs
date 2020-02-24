@@ -30,7 +30,7 @@ namespace Stringek
 
 			foreach (var word in words)
 			{
-				System.Console.WriteLine(word);
+				Console.WriteLine(word);
 			}
 			Console.ReadKey();
 		}
