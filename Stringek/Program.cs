@@ -77,10 +77,23 @@ namespace Stringek
 				else
 					flag = 0;
 			}
-
+			for (int i = 0; i < oszChar.Length - 1; ++i)
+			{
+				for (int j = oszChar.Length - 1; j > i; --j)
+				{
+					if (oszChar[j - 1] > oszChar[j])
+					{
+						char tmp = oszChar[j];
+						oszChar[j] = oszChar[j - 1];
+						oszChar[j - 1] = tmp;
+					}
+				}
+			}
 			osszszoveg = new string(oszChar);
-			
-			//Console.WriteLine(osszszoveg);
+
+			string TrimString = osszszoveg.Trim();
+
+			Console.WriteLine(TrimString);
 			Console.ReadKey();
 		}
 	}
