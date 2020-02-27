@@ -12,12 +12,12 @@ namespace Stringek
 		{
 			string szovegresz;
 			string osszszoveg = "";
-			while(true)
+			while (true)
 			{
 				Console.WriteLine("Kérem a következő szövegrészt:");
 
 				szovegresz = Console.ReadLine();
-				if(szovegresz == "")
+				if (szovegresz == "")
 				{
 					break;
 				}
@@ -25,8 +25,24 @@ namespace Stringek
 				osszszoveg += " ";
 			}
 			//Console.WriteLine(osszszoveg);
-			char[] elvalaszto = new char[] { ' ' , '\t'};
+			char[] elvalaszto = new char[] { ' ', '\t' };
 			string[] words = osszszoveg.Split(elvalaszto, StringSplitOptions.RemoveEmptyEntries);
+			string nagyKezdoA;
+			string osszesA = "";
+			for (int i = 0; i < words.Length; i++)
+			{
+				if (words[i].StartsWith("a"))
+				{
+					char[] word = words[i].ToCharArray();
+
+					word[0] = char.ToUpper(word[0]);
+
+					nagyKezdoA = new string(word);
+					osszesA += nagyKezdoA;
+					osszesA += " ";
+				}
+			}
+			Console.WriteLine(osszesA);
 			int szamlalo = 0;
 			bool megvan = false;
 			//string[] q = words.Distinct().ToArray();
@@ -42,7 +58,7 @@ namespace Stringek
 						break;
 					}
 				}
-				if(megvan == false)
+				if (megvan == false)
 				{
 					egyedi[szamlalo] = words[i];
 					szamlalo++;
@@ -62,12 +78,12 @@ namespace Stringek
 				else if (oszChar[i] == 'Y')
 				{
 					counter += flag;
-					if(flag == 1)
+					if (flag == 1)
 					{
 						oszChar[i] = '?';
-						oszChar[i-1] = '?';
+						oszChar[i - 1] = '?';
 					}
-					if(flag > 1)
+					if (flag > 1)
 					{
 						oszChar[i] = '?';
 						oszChar[i - 1] = '?';
