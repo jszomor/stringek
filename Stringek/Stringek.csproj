@@ -43,6 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BuborekRendezes.cs" />
+    <Compile Include="KerdojelLYHelyett.cs" />
+    <Compile Include="LexRendezes.cs" />
+    <Compile Include="MindenSzoKulonSorba.cs" />
+    <Compile Include="NagyA.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

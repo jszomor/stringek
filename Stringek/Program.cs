@@ -27,85 +27,12 @@ namespace Stringek
 			//Console.WriteLine(osszszoveg);
 			char[] elvalaszto = new char[] { ' ', '\t' };
 			string[] words = osszszoveg.Split(elvalaszto, StringSplitOptions.RemoveEmptyEntries);
-			string nagyKezdoA;
-			string osszesA = "";
-			for (int i = 0; i < words.Length; i++)
-			{
-				if (words[i].StartsWith("a"))
-				{
-					char[] word = words[i].ToCharArray();
-
-					word[0] = char.ToUpper(word[0]);
-
-					nagyKezdoA = new string(word);
-					osszesA += nagyKezdoA;
-					osszesA += " ";
-				}
-			}
-			Console.WriteLine(osszesA);
-			int szamlalo = 0;
-			bool megvan = false;
-			//string[] q = words.Distinct().ToArray();
-			string[] egyedi = new string[words.Length];
-			for (int i = 0; i < words.Length; i++)
-			{
-				megvan = false;
-				for (int j = 0; j < szamlalo; j++)
-				{
-					if (words[i] == egyedi[j])
-					{
-						megvan = true;
-						break;
-					}
-				}
-				if (megvan == false)
-				{
-					egyedi[szamlalo] = words[i];
-					szamlalo++;
-				}
-			}
-			for (int i = 0; i < szamlalo; i++)
-			{
-				Console.WriteLine(egyedi[i]);
-			}
-			int counter = 0;
-			int flag = 0;
+			LexRendezes.RendezesLex(words);
 			char[] oszChar = osszszoveg.ToCharArray();
-			for (int i = 0; i < oszChar.Length; i++)
-			{
-				if (oszChar[i] == 'L')
-					flag++;
-				else if (oszChar[i] == 'Y')
-				{
-					counter += flag;
-					if (flag == 1)
-					{
-						oszChar[i] = '?';
-						oszChar[i - 1] = '?';
-					}
-					if (flag > 1)
-					{
-						oszChar[i] = '?';
-						oszChar[i - 1] = '?';
-						oszChar[i - 2] = '?';
-					}
-				}
-				else
-					flag = 0;
-			}
-			for (int i = 0; i < oszChar.Length - 1; ++i)
-			{
-				for (int j = oszChar.Length - 1; j > i; --j)
-				{
-					if (oszChar[j - 1] > oszChar[j])
-					{
-						char tmp = oszChar[j];
-						oszChar[j] = oszChar[j - 1];
-						oszChar[j - 1] = tmp;
-					}
-				}
-			}
-			osszszoveg = new string(oszChar);
+			MindenSzoKulonSorba.KulonSorba(words);
+			Console.WriteLine(NagyA.KezdoBetuNagyA(words));			
+			osszszoveg = new string(BuborekRendezes.Bubble(oszChar));
+			osszszoveg = new string(KerdojelLYHelyett.LYHelyettKerdojel(oszChar));
 
 			string TrimString = osszszoveg.Trim();
 
