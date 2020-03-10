@@ -27,7 +27,8 @@ namespace Stringek
 			//Console.WriteLine(osszszoveg);
 			char[] elvalaszto = new char[] { ' ', '\t' };
 			string[] words = osszszoveg.Split(elvalaszto, StringSplitOptions.RemoveEmptyEntries);
-			LexRendezes.RendezesLex(words);
+			//LexRendezes.RendezesLex(words);
+			Array.Sort(words, ExtraCompare);
 			char[] oszChar = osszszoveg.ToCharArray();
 			MindenSzoKulonSorba.KulonSorba(words);
 			Console.WriteLine(NagyA.KezdoBetuNagyA(words));			
@@ -38,6 +39,10 @@ namespace Stringek
 
 			Console.WriteLine(TrimString);
 			Console.ReadKey();
+		}
+		static int ExtraCompare(string a, string b)
+		{
+			return a.Length - b.Length;
 		}
 	}
 }

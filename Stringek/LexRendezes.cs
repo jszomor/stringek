@@ -10,30 +10,18 @@ namespace Stringek
 	{
 		public static void RendezesLex(string[] words)
 		{
-			//List<string> rendezettSzavak = new List<string>();
-			Array.Sort(words);
-			foreach(var word in words)
+			for (int i = 0; i < words.Length - 1; ++i)
 			{
-				Console.WriteLine(word);
+				for (int j = words.Length - 1; j > i; --j)
+				{
+					if (string.Compare(words[j-1], words[j], true) > 0)
+					{
+						string tmp = words[j];
+						words[j] = words[j - 1];
+						words[j - 1] = tmp;
+					}
+				}
 			}
-			#region
-			//string word;
-			//for (int i = 0; i < words.Length; i++)
-			//{
-			//	for (int j = 0; j < words.Length; j++)
-			//	{
-			//		char[] wordCharI = words[i].ToCharArray();
-			//		char[] wordCharJ = words[j].ToCharArray();
-
-			//		if(wordCharI[i] > wordCharJ[j])
-			//		{
-			//			rendezettSzavak.Add(words[i].ToString());
-			//		}
-			//		else if(wordCharI[i] < wordCharJ[j])
-			//			rendezettSzavak.Add(words[j].ToString());
-			//	}
-			//}
-			#endregion
 		}
 	}
 }
